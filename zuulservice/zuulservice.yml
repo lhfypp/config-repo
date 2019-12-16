@@ -15,3 +15,12 @@ hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 2500
 #hystrix.command.licensingservice.execution.isolation.thread.timeoutInMilliseconds: 2
 #licensingservice.ribbon.ReadTimeout: 2
 signing.key: "345345fsdfsf5345"
+
+
+#访问静态页面（如nginx托管多个，需要负载均衡）
+zuul.routes.mytest.path=/mytest/**
+zuul.routes.mytest.serviceId=mytest
+mytest.ribbon.NIWSServerListClassName=com.netflix.loadbalancer.ConfigurationBasedServerList
+#snxy-page-service.ribbon.listOfServers=http://localhost:81,http://localhost:82
+mytest.ribbon.listOfServers=http://localhost:8090,http://localhost:8091
+#如果有多个，如上用逗号隔开
